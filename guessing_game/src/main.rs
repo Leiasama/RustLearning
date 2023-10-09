@@ -12,8 +12,7 @@ fn main() {
     //i32类型
     //包括1包括101的随机数
     
-    
-    println!("神秘数字是:{}",sercet_number);
+
     //let FOO = 1;将1的值赋给了变量FOO
     //let bar = FOO; 将foo的变量值绑定到bar上
     //let FOO = 2;rust里面变量默认不可变，此时会报错，无法两次为不可变变量赋值
@@ -32,7 +31,17 @@ fn main() {
     //expect是io::Result定义的方法 err时，中断程序，返回信息，如果ok就会返回附加值给用户
    
     //{}占位符，对应变量值
-    let guess:u32 = guess.trim().parse().expect("请输入一个数字:");
+    let guess:u32 = match guess.trim().parse(){
+        //枚举类型的两个变体Ok和Err
+        Ok(num) => num,
+        //Ok就获得
+        Err(_) =>
+        {
+            println!("请输入数字，别输入别的");
+            continue;
+            //表示不在意里面是什么 通配符了属于是(_)
+        }
+    };
     //rust允许使用同名新变量，来隐藏就变量
     //返回result类型 trim是抹除零的 parse是解析成整数的
     //解析不了会失败
@@ -41,9 +50,12 @@ fn main() {
 
     match guess.cmp(&sercet_number){
         Ordering::Less => println!("太小了"),
-        Ordering::Equal => println!("等于，你赢了"),
+    
         Ordering::Greater => println!("太大了"),
-       
+        Ordering::Equal => {
+                println!("等于，你赢了");
+                break;
+                }
     }
     //箭头是等号加大小于 =>
         //方法的是枚举类型，
