@@ -6,3 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+rand = "0.8.4"
+#在这里进行安装外部依赖库
+#如果下载不动换源 这些外部库进行Cargo进行管理
+#在手动升级之前，会保留原版本
+#有人说和npm一样
