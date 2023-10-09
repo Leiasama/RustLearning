@@ -12,13 +12,15 @@ fn main() {
     //i32类型
     //包括1包括101的随机数
     
-    println!("猜一个整数");
+    
     println!("神秘数字是:{}",sercet_number);
     //let FOO = 1;将1的值赋给了变量FOO
     //let bar = FOO; 将foo的变量值绑定到bar上
     //let FOO = 2;rust里面变量默认不可变，此时会报错，无法两次为不可变变量赋值
     //加上mut这样就可以为可变变量了
-    let mut guess = String::new();
+    loop{
+        println!("猜一个整数");
+        let mut guess = String::new();
     //将guess绑定上标准库字符串的一个实例
     //::关联函数，相当于java静态方法
     io::stdin().read_line(&mut guess).expect("无法读取行");
@@ -47,4 +49,6 @@ fn main() {
         //方法的是枚举类型，
         //match根据多个手臂来组成 natch后紧跟的值和某个分支相匹配
         //就进行
+    }//无限循环
+    
 }
